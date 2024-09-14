@@ -320,17 +320,99 @@ const TrademarkList = ({ search }) => {
 
                 {/* Status Column */}
                 <Td>
-                  <Stack spacing="1">
-                    <Flex align="center" gap="1">
-                      {/* Status Indicator Logic */}
-                      {/* Insert status display here */}
+                   <Stack spacing="1">
+                     <Flex align="center" gap="1">
+                       {
+                        trademark._source.status_type === "abandoned"? (<>
+                        <Stack>
+                        <Text fontWeight="bold" color="red.400">
+                          Dead/Cancelled
+                       </Text>
+                       <Text fontWeight="normal" fontSize='small'>
+                          On <span style={{fontWeight:'bold'}}>
+                          {new Date(trademark._source.status_date * 1000).toLocaleDateString('en-US', { 
+                                  year: 'numeric', 
+                                 month: 'long', 
+                                 day: 'numeric'
+                            })}
+                          </span>
+                       </Text>
+                       </Stack>
+                        </>):(<>
+                        {
+                            trademark._source.status_type === "pending"?(<>
+                            <Stack>
+                        <Text fontWeight="bold" color="yellow.400">
+                          Live/Pending
+                       </Text>
+                       <Text fontWeight="normal" fontSize='small'>
+                          On <span style={{fontWeight:'bold'}}>
+                          {new Date(trademark._source.status_date * 1000).toLocaleDateString('en-US', { 
+                                  year: 'numeric', 
+                                 month: 'long', 
+                                 day: 'numeric'
+                            })}
+                          </span>
+                       </Text>
+                       </Stack>
+                            </>):(<>
+                            {
+                                trademark._source.status_type === "registered"?(<>
+                                 <Stack>
+                        <Text fontWeight="bold" color="green.400">
+                          Live/Registered
+                       </Text>
+                       <Text fontWeight="normal" fontSize='small'>
+                          On <span style={{fontWeight:'bold'}}>
+                          {new Date(trademark._source.status_date * 1000).toLocaleDateString('en-US', { 
+                                  year: 'numeric', 
+                                 month: 'long', 
+                                 day: 'numeric'
+                            })}
+                          </span>
+                       </Text>
+                       <Flex align="center" gap="1">
+                      <AiOutlineSync color="red" />
+                      <Text fontSize="sm" color="red.500">
+                      {new Date(trademark._source.renewal_date * 1000).toLocaleDateString('en-US', { 
+                                  year: 'numeric', 
+                                 month: 'long', 
+                                 day: 'numeric'
+                            })}
+                      </Text>
+                    </Flex>
+                       </Stack>
+                                </>):(<>
+                               {
+                                <Stack>
+                                <Text fontWeight="bold" color="blue.400">
+                                  Indifferent
+                               </Text>
+                               <Text fontWeight="normal" fontSize='small'>
+                                  On <span style={{fontWeight:'bold'}}>
+                                  {new Date(trademark._source.status_date * 1000).toLocaleDateString('en-US', { 
+                                          year: 'numeric', 
+                                         month: 'long', 
+                                         day: 'numeric'
+                                    })}
+                                  </span>
+                               </Text>
+                               </Stack>
+                               }
+                                </>)
+                            }
+                            </>)
+                        }
+                        </>)
+                      }
+                      
                     </Flex>
                     <Text fontSize="sm" color="gray.500">
                       {/* on {trademark.statusDate} */}
                     </Text>
+                   
                   </Stack>
                 </Td>
-
                 {/* Class/Description Column */}
                 <Td>
                   <Text fontSize="small">
@@ -386,6 +468,100 @@ const TrademarkList = ({ search }) => {
                 )}
               </Text>
               {/* Status Section */}
+              <Flex justifyContent='center'>
+                   <Stack spacing="1">
+                     <Flex align="center" gap="1">
+                       {
+                        trademark._source.status_type === "abandoned"? (<>
+                        <Stack>
+                        <Text fontWeight="bold" color="red.400">
+                          Dead/Cancelled
+                       </Text>
+                       <Text fontWeight="normal" fontSize='small'>
+                          On <span style={{fontWeight:'bold'}}>
+                          {new Date(trademark._source.status_date * 1000).toLocaleDateString('en-US', { 
+                                  year: 'numeric', 
+                                 month: 'long', 
+                                 day: 'numeric'
+                            })}
+                          </span>
+                       </Text>
+                       </Stack>
+                        </>):(<>
+                        {
+                            trademark._source.status_type === "pending"?(<>
+                            <Stack>
+                        <Text fontWeight="bold" color="yellow.400">
+                          Live/Pending
+                       </Text>
+                       <Text fontWeight="normal" fontSize='small'>
+                          On <span style={{fontWeight:'bold'}}>
+                          {new Date(trademark._source.status_date * 1000).toLocaleDateString('en-US', { 
+                                  year: 'numeric', 
+                                 month: 'long', 
+                                 day: 'numeric'
+                            })}
+                          </span>
+                       </Text>
+                       </Stack>
+                            </>):(<>
+                            {
+                                trademark._source.status_type === "registered"?(<>
+                                 <Stack>
+                        <Text fontWeight="bold" color="green.400">
+                          Live/Registered
+                       </Text>
+                       <Text fontWeight="normal" fontSize='small'>
+                          On <span style={{fontWeight:'bold'}}>
+                          {new Date(trademark._source.status_date * 1000).toLocaleDateString('en-US', { 
+                                  year: 'numeric', 
+                                 month: 'long', 
+                                 day: 'numeric'
+                            })}
+                          </span>
+                       </Text>
+                       <Flex align="center" gap="1">
+                      <AiOutlineSync color="red" />
+                      <Text fontSize="sm" color="red.500">
+                      {new Date(trademark._source.renewal_date * 1000).toLocaleDateString('en-US', { 
+                                  year: 'numeric', 
+                                 month: 'long', 
+                                 day: 'numeric'
+                            })}
+                      </Text>
+                    </Flex>
+                       </Stack>
+                                </>):(<>
+                               {
+                                <Stack>
+                                <Text fontWeight="bold" color="blue.400">
+                                  Indifferent
+                               </Text>
+                               <Text fontWeight="normal" fontSize='small'>
+                                  On <span style={{fontWeight:'bold'}}>
+                                  {new Date(trademark._source.status_date * 1000).toLocaleDateString('en-US', { 
+                                          year: 'numeric', 
+                                         month: 'long', 
+                                         day: 'numeric'
+                                    })}
+                                  </span>
+                               </Text>
+                               </Stack>
+                               }
+                                </>)
+                            }
+                            </>)
+                        }
+                        </>)
+                      }
+                      
+                    </Flex>
+                    <Text fontSize="sm" color="gray.500">
+                      {/* on {trademark.statusDate} */}
+                    </Text>
+                   
+                  </Stack>
+              </Flex>
               <Flex justify="center" align="center" mt="2" gap="1">
                 {/* Status Indicator Logic */}
               </Flex>
